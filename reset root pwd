@@ -1,0 +1,17 @@
+# This method works for MacOS 14.0 M1
+# MySql Version: 8.1.0
+
+1. Make sure you have Stopped MySQL first.
+2. Run the server in safe mode with privilege bypass: sudo mysqld_safe --skip-grant-tables
+3. mysql -u root
+4. UPDATE mysql.user SET authentication_string=null WHERE User='root';
+5. FLUSH PRIVILEGES;
+6. exit;
+7. mysql -u root
+8. ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'yourpasswd';
+
+Errors:
+E1: MySQL ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+S1: Find the current policy requirements and alter your password according to it:  mysql> SHOW VARIABLES LIKE 'validate_password%';
+S2: If you don't want to change the requirement: mysql> SET GLOBAL validate_password.policy=LOW;
+
