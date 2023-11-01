@@ -13,5 +13,5 @@
 Errors:
 E1: MySQL ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
 S1: Find the current policy requirements and alter your password according to it:  mysql> SHOW VARIABLES LIKE 'validate_password%';
-S2: If you don't want to change the requirement: mysql> SET GLOBAL validate_password.policy=LOW;
+S2: If you want to change the requirement: mysql> SET GLOBAL validate_password.policy=LOW;
 
